@@ -1,5 +1,11 @@
 echo "1 Creating missing directories!";
 
+rm -rf $HOME/.gradle $HOME/.android $HOME/.dartServer
+
+ln -s $HOME/goinfre/.gradle ~/gradle
+ln -s $HOME/goinfre/.android ~/android
+ln -s $HOME/goinfre/.dartServer ~/dartServer
+
 DARTSERVER=$(ls $HOME/goinfre | grep .dartServer);
 ANDROID=$(ls $HOME/goinfre | grep .android);
 GRADLE=$(ls $HOME/goinfre | grep .gradle);
