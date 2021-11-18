@@ -6,10 +6,10 @@ ln -s $HOME/goinfre/.gradle ~/.gradle
 ln -s $HOME/goinfre/.android ~/.android
 ln -s $HOME/goinfre/.dartServer ~/.dartServer
 
-DARTSERVER=$(ls $HOME/goinfre | grep .dartServer);
-ANDROID=$(ls $HOME/goinfre | grep .android);
-GRADLE=$(ls $HOME/goinfre | grep .gradle);
-FLUTTER=$(ls $HOME/goinfre | grep Flutter);
+DARTSERVER=$(ls -la $HOME/goinfre | grep .dartServer);
+ANDROID=$(ls -la $HOME/goinfre | grep .android);
+GRADLE=$(ls -la $HOME/goinfre | grep .gradle);
+FLUTTER=$(ls -la $HOME/goinfre | grep Flutter);
 
 if [ "$DARTSERVER" = "" ]; then
     echo "-- .dartServer Dir missing!";
@@ -30,7 +30,7 @@ if [ "$FLUTTER" = "" ]; then
     echo "-- Flutter Dir missing!";
     mkdir $HOME/goinfre/Flutter;
     echo "-- Flutter Dir created!";
-    FLTR=$(ls ~/Downloads/flutter.zip)
+    FLTR=$(ls -la ~/Downloads/flutter.zip)
     if [ "$FLTR" = "" ]; then
         echo "-- Flutter.zip missing!";
         echo "-- Downloading Flutter SDK";
