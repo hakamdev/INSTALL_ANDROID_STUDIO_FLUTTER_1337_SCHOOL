@@ -6,10 +6,10 @@ ln -s $HOME/goinfre/.gradle ~/.gradle
 ln -s $HOME/goinfre/.android ~/.android
 ln -s $HOME/goinfre/.dartServer ~/.dartServer
 
-DARTSERVER=$(ls -la $HOME/goinfre | grep .dartServer);
-ANDROID=$(ls -la $HOME/goinfre | grep .android);
-GRADLE=$(ls -la $HOME/goinfre | grep .gradle);
-FLUTTER=$(ls -la $HOME/goinfre | grep Flutter);
+DARTSERVER=$(ls -la $HOME/goinfre/ | grep .dartServer);
+ANDROID=$(ls -la $HOME/goinfre/ | grep .android);
+GRADLE=$(ls -la $HOME/goinfre/ | grep .gradle);
+FLUTTER=$(ls -la $HOME/goinfre/ | grep Flutter);
 
 if [ "$DARTSERVER" = "" ]; then
     echo "-- .dartServer Dir missing!";
