@@ -11,7 +11,7 @@ ln -s ~/goinfre/.android ~/.android;
 ln -s ~/goinfre/.dartServer ~/.dartServer;
 
 echo "Downloading Flutter SDK";
-curl -L -o ~/goinfre/flutter.zip https://storage.googleapis.com/flutter_infra_release/releases/stable/macos/flutter_macos_2.5.3-stable.zip;
+curl -L -o ~/goinfre/flutter.zip https://storage.googleapis.com/flutter_infra_release/releases/stable/macos/flutter_macos_3.0.2-stable.zip;
 
 echo "Extracting Flutter SDK";
 cd ~/goinfre && unzip flutter.zip -d ~/goinfre/Flutter
