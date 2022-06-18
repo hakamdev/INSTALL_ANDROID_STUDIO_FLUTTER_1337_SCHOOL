@@ -34,7 +34,7 @@ if [ "$FLUTTER" = "" ]; then
     if [ "$FLTR" = "" ]; then
         echo "-- Flutter.zip missing!";
         echo "-- Downloading Flutter SDK";
-        curl -L -o $HOME/Downloads/flutter.zip https://storage.googleapis.com/flutter_infra_release/releases/stable/macos/flutter_macos_2.10.0-stable.zip;
+        curl -L -o $HOME/Downloads/flutter.zip https://storage.googleapis.com/flutter_infra_release/releases/stable/macos/flutter_macos_3.0.2-stable.zip;
     fi
     echo "-- Extracting Flutter SDK";
     cd $HOME/Downloads && unzip flutter.zip -d $HOME/goinfre/Flutter;
