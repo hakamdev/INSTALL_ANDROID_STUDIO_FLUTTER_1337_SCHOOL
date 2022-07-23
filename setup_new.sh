@@ -37,11 +37,11 @@ echo "export PATH=\"\$PATH:\$HOME/Library/Android/sdk/platform-tools\"" >> ~/.zs
 echo "export PATH=\"\$PATH:\$HOME/Library/Android/sdk/tools/bin\"" >> ~/.zshrc
 echo
 
-echo "✅ PATH in .zshrc ${BGreen}Updated${Color_Off}\n"
+echo "✅ PATH in .zshrc ${BGreen}Updated${Color_Off}"
 open /Applications/Android\ Studio.app
 
 if [ $? -eq "1" ]; then
-    echo "${BYellow}Note:${Color_Off} 🤖 ${BCyan}Android Studio${Color_Off} is ${BRed}not installed!${Color_Off}, Please ${BBlue}install${Color_Off} it from Managed Software Center that was ${BBlue}opened for you!${Color_Off}\n"
+    echo "${BYellow}Note:${Color_Off} 🤖 ${BCyan}Android Studio${Color_Off} is ${BRed}not installed!${Color_Off}, Please ${BBlue}install${Color_Off} it from Managed Software Center that was ${BBlue}opened for you!${Color_Off}"
     open /Applications/Managed\ Software\ Center.app
 fi
 
