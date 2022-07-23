@@ -1,4 +1,15 @@
-echo "1 Creating missing directories!";
+Color_Off='\033[0m'       # Text Reset
+# Bold
+BBlack='\033[1;30m'       # Black
+BRed='\033[1;31m'         # Red
+BGreen='\033[1;32m'       # Green
+BYellow='\033[1;33m'      # Yellow
+BBlue='\033[1;34m'        # Blue
+BPurple='\033[1;35m'      # Purple
+BCyan='\033[1;36m'        # Cyan
+BWhite='\033[1;37m'       # White
+
+echo -e "⚒ ${BGreen}Creating missing directories!${Color_Off}\n";
 
 rm -rf $HOME/.gradle $HOME/.android $HOME/.dartServer
 
@@ -12,31 +23,31 @@ GRADLE=$(ls -la $HOME/goinfre/ | grep .gradle);
 FLUTTER=$(ls -la $HOME/goinfre/ | grep Flutter);
 
 if [ "$DARTSERVER" = "" ]; then
-    echo "-- .dartServer Dir missing!";
+    echo -e "❌ .dartServer Dir ${BRed}missing!${Color_Off}";
     mkdir $HOME/goinfre/.dartServer;
-    echo "-- .dartServer Dir created!";
+    echo -e  "✅ .dartServer Dir ${BGreen}created!${Color_Off}\n";
 fi
 if [ "$ANDROID" = "" ]; then
-    echo "-- .android Dir missing!";
+    echo -e "❌ .android Dir ${BRed}missing!${Color_Off}";
     mkdir $HOME/goinfre/.android;
-    echo "-- .android Dir created!";
+    echo -e "✅ .android Dir ${BGreen}created!${Color_Off}\n";
 fi
 if [ "$GRADLE" = "" ]; then
-    echo "-- .gradle Dir missing!";
+    echo -e "❌ .gradle Dir ${BRed}missing!${Color_Off}";
     mkdir $HOME/goinfre/.gradle;
-    echo "-- .gradle Dir created!";
+    echo -e "✅ .gradle Dir ${BGreen}created!${Color_Off}\n";
 fi
 if [ "$FLUTTER" = "" ]; then
-    echo "-- Flutter Dir missing!";
+    echo -e "❌ Flutter Dir ${BRed}missing!${Color_Off}";
     mkdir $HOME/goinfre/Flutter;
-    echo "-- Flutter Dir created!";
+    echo -e "✅ Flutter Dir ${BGreen}created!${Color_Off}\n";
     FLTR=$(ls -la ~/Downloads/flutter.zip)
     if [ "$FLTR" = "" ]; then
-        echo "-- Flutter.zip missing!";
-        echo "-- Downloading Flutter SDK";
+        echo -e "${BYellow}Note:${Color_Off} ❌ Flutter.zip ${BGreen}missing!${Color_Off}";
+        echo -e "${BYellow}Note:${Color_Off} 🚀 ${BGreen}Downloading Flutter SDK${Color_Off}\n";
         curl -L -o $HOME/Downloads/flutter.zip https://storage.googleapis.com/flutter_infra_release/releases/stable/macos/flutter_macos_3.0.2-stable.zip;
     fi
-    echo "-- Extracting Flutter SDK";
+    echo "⚒ ${BGreen}Extracting Flutter SDK${Color_Off}\n";
     cd $HOME/Downloads && unzip flutter.zip -d $HOME/goinfre/Flutter;
 fi
 
@@ -60,8 +71,8 @@ fi
 open /Applications/Android\ Studio.app;
 
 if [ $? -eq "1" ]; then
-    echo "Android Studio is not installed! Please install it from Managed Software Center!";
-    open /Applications/Managed\ Software\ Center.app;
+    echo "${BYellow}Note:${Color_Off} 🤖 ${BCyan}Android Studio${Color_Off} is ${BRed}not installed!${Color_Off}, Please ${BBlue}install${Color_Off} it from Managed Software Center that was ${BBlue}opened for you!${Color_Off}\n"
+    open /Applications/Managed\ Software\ Center.app
 fi
 
 # echo "Good, now to the manual stuff :("
