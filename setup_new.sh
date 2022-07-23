@@ -10,21 +10,21 @@ BCyan='\033[1;36m'        # Cyan
 BWhite='\033[1;37m'       # White
 
 # Set up Android Studio for Flutter Development
-echo -e "✈  ${BGreen}Cleaning up old dirs and symlinks!${Color_Off}\n";
+echo -e "✈  ${BGreen}Cleaning up old dirs and symlinks!${Color_Off}";
 rm -rf ~/.android ~/.gradle ~/.dartServer ~/Library/Android ~/Library/Flutter;
 rm -rf ~/goinfre/Android ~/goinfre/.android ~/goinfre/.gradle ~/goinfre/.dartServer ~/goinfre/Caches ~/goinfre/Flutter;
 
-echo -e "🚩 ${BGreen}Creating new dirs and symlinks${Color_Off}\n";
+echo -e "🚩 ${BGreen}Creating new dirs and symlinks${Color_Off}";
 mkdir ~/goinfre/Android ~/goinfre/.android ~/goinfre/.gradle ~/goinfre/.dartServer ~/goinfre/Caches ~/goinfre/Flutter;
 ln -s ~/goinfre/Android ~/Library/Android;
 ln -s ~/goinfre/.gradle ~/.gradle;
 ln -s ~/goinfre/.android ~/.android;
 ln -s ~/goinfre/.dartServer ~/.dartServer;
 
-echo -e "🚀 ${BGreen}Downloading Flutter SDK${Color_Off}\n";
+echo -e "🚀 ${BGreen}Downloading Flutter SDK${Color_Off}";
 curl -L -o ~/goinfre/flutter.zip https://storage.googleapis.com/flutter_infra_release/releases/stable/macos/flutter_macos_3.0.2-stable.zip;
 
-echo -e "⚒ ${BGreen}Extracting Flutter SDK${Color_Off}\n";
+echo -e "⚒ ${BGreen}Extracting Flutter SDK${Color_Off}";
 cd ~/goinfre && unzip flutter.zip -d ~/goinfre/Flutter
 
 
