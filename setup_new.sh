@@ -19,11 +19,12 @@ cd ~/goinfre && unzip flutter.zip -d ~/goinfre/Flutter
 
 echo >> ~/.zshrc
 echo "export JAVA_HOME=\"/Applications/Android Studio.app/Contents/jre/Contents/Home\"" >> ~/.zshrc
+echo "export PATH=\"\$PATH:/Applications/Android Studio.app/Contents/jre/Contents/Home/bin\"" >> ~/.zshrc
 # echo "export ANDROID_SDK_HOME=\"\$HOME/Library/Android/sdk\"" >> ~/.zshrc
 echo "export PATH=\"\$PATH:\$HOME/goinfre/Flutter/flutter/bin\"" >> ~/.zshrc
-echo "export PATH=\"\$PATH:/Applications/Android Studio.app/Contents/jre/Contents/Home/bin\"" >> ~/.zshrc
-# echo "export PATH=\"\$PATH:\$HOME/Library/Android/sdk/platform-tools\"" >> ~/.zshrc
-echo "export PATH=\"\$PATH:\$HOME/Library/Android/sdk/tools/bin\"" >> ~/.zshrc
+echo "export PATH=\"\$PATH:\$HOME/Library/Android/sdk/platform-tools\"" >> ~/.zshrc
+# echo "export PATH=\"\$PATH:\$HOME/Library/Android/sdk/tools/bin\"" >> ~/.zshrc
+echo "export PATH=\"\$PATH:\$HOME/Library/Android/sdk/cmdline-tools/latest/bin\"" >> ~/.zshrc
 echo
 
 echo "Updating PATH in .zshrc"
