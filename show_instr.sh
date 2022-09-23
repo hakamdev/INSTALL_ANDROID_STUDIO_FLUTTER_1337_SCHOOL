@@ -28,7 +28,7 @@ echo "⛔️- The XCode error can only be solved with Updating XCode. You can't 
 echo "✅- Greeeeeat!" $NC
 echo "🔵- Now, create a new project by Selecting $COLOR New Flutter Project $NC or $COLOR New Project $NC if you do Native Android" $NC
 echo "🔵- If you are asked for flutter SDK Path, here it is $COLOR $HOME/goinfre/Flutter/flutter" $NC
-echo "🔵- After the project is created, you may need to show it where SDK is, the first time, so go to $COLOR File > Project Structure > $NC and where it says $COLOR<No SDK>$NC, select Android API 31..." $NC
+echo "🔵- After the project is created, you may need to show it where SDK is, the first time, so go to $COLOR File > Project Structure > $NC and where it says $COLOR<No SDK>$NC, select latest Android API..." $NC
 echo "🔵- If you want to create an emulator, go to $COLOR Tools > AVD Manager > $NC and create a new one. You can download an image from there too." $NC
 echo "🔵- If you want to run the app on your phone, you need to enable USB Debugging on your phone, and connect it to your computer." $NC
 echo "🛑- If you prefer VSCode. Then I can't help you. Figure it out yourself. You probably need to install Flutter and Dart extensions and stuff..." $NC
