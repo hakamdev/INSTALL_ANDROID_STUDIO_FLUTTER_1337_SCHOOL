@@ -1,39 +1,3 @@
-# Set up Android Studio for Flutter Development
-echo "Cleaning up old dirs and symlinks!";
-rm -rf ~/.android ~/.gradle ~/.dartServer ~/Library/Android ~/Library/Flutter;
-rm -rf ~/goinfre/Android ~/goinfre/.android ~/goinfre/.gradle ~/goinfre/.dartServer ~/goinfre/Caches ~/goinfre/Flutter;
-
-echo "Creating new dirs and symlinks";
-mkdir ~/goinfre/Android ~/goinfre/.android ~/goinfre/.gradle ~/goinfre/.dartServer ~/goinfre/Caches ~/goinfre/Flutter;
-ln -s ~/goinfre/Android ~/Library/Android;
-ln -s ~/goinfre/.gradle ~/.gradle;
-ln -s ~/goinfre/.android ~/.android;
-ln -s ~/goinfre/.dartServer ~/.dartServer;
-
-echo "Downloading Flutter SDK";
-curl -L -o ~/goinfre/flutter.zip https://storage.googleapis.com/flutter_infra_release/releases/stable/macos/flutter_macos_3.3.2-stable.zip;
-
-echo "Extracting Flutter SDK";
-cd ~/goinfre && unzip flutter.zip -d ~/goinfre/Flutter
-
-
-echo >> ~/.zshrc
-echo "export JAVA_HOME=\"/Applications/Android Studio.app/Contents/jre/Contents/Home\"" >> ~/.zshrc
-# echo "export ANDROID_SDK_HOME=\"\$HOME/Library/Android/sdk\"" >> ~/.zshrc
-echo "export PATH=\"\$PATH:\$HOME/goinfre/Flutter/flutter/bin\"" >> ~/.zshrc
-echo "export PATH=\"\$PATH:/Applications/Android Studio.app/Contents/jre/Contents/Home/bin\"" >> ~/.zshrc
-# echo "export PATH=\"\$PATH:\$HOME/Library/Android/sdk/platform-tools\"" >> ~/.zshrc
-echo "export PATH=\"\$PATH:\$HOME/Library/Android/sdk/tools/bin\"" >> ~/.zshrc
-echo
-
-echo "Updating PATH in .zshrc"
-open /Applications/Android\ Studio.app
-
-if [ $? -eq "1" ]; then
-    echo "Android Studio is not installed! Please install it from Managed Software Center that was opened for you!"
-    open /Applications/Managed\ Software\ Center.app
-fi
-
 COLOR='\033[0;32m'
 COLOR2='\033[0;31m'
 COLOR3='\033[0;33m'
