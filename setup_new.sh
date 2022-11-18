@@ -1,10 +1,11 @@
 # Set up Android Studio for Flutter Development
 echo "Cleaning up old dirs and symlinks!";
 rm -rf ~/.android ~/.gradle ~/.dartServer ~/Library/Android ~/Library/Flutter;
-rm -rf ~/goinfre/Android ~/goinfre/.android ~/goinfre/.gradle ~/goinfre/.dartServer ~/goinfre/Caches ~/goinfre/Flutter;
+rm -rf ~/goinfre/Android ~/goinfre/.android ~/goinfre/.gradle ~/goinfre/.dartServer ~/goinfre/Caches;
+rm -rf ~/goinfre/flutter.zip ~/goinfre/cmdline-tools.zip ~/goinfre/Flutter ~/goinfre/CMDTOOLSTEMP;
 
 echo "Creating new dirs and symlinks";
-mkdir ~/goinfre/Android ~/goinfre/.android ~/goinfre/.gradle ~/goinfre/.dartServer ~/goinfre/Caches ~/goinfre/Flutter;
+mkdir ~/goinfre/Android ~/goinfre/.android ~/goinfre/.gradle ~/goinfre/.dartServer ~/goinfre/Caches ~/goinfre/Flutter ~/goinfre/CMDTOOLSTEMP;
 ln -s ~/goinfre/Android ~/Library/Android;
 ln -s ~/goinfre/.gradle ~/.gradle;
 ln -s ~/goinfre/.android ~/.android;
@@ -16,18 +17,31 @@ curl -L -o ~/goinfre/flutter.zip https://storage.googleapis.com/flutter_infra_re
 echo "Extracting Flutter SDK";
 cd ~/goinfre && unzip flutter.zip -d ~/goinfre/Flutter
 
+echo "Downloading Android Cmdline Tools";
+curl -L -o ~/goinfre/cmdline-tools.zip https://dl.google.com/android/repository/commandlinetools-mac-9123335_latest.zip;
 
+echo "Extracting Android Cmdline Tools";
+cd ~/goinfre && unzip cmdline-tools.zip -d ~/goinfre/CMDTOOLSTEMP;
+mkdir -p ~/Library/Android/sdk/cmdline-tools/latest;
+mv ~/goinfre/CMDTOOLSTEMP/cmdline-tools/* ~/Library/Android/sdk/cmdline-tools/latest;
+
+echo "Updating PATH in .zshrc"
 echo >> ~/.zshrc
 echo "export JAVA_HOME=\"/Applications/Android Studio.app/Contents/jre/Contents/Home\"" >> ~/.zshrc
 echo "export PATH=\"\$PATH:/Applications/Android Studio.app/Contents/jre/Contents/Home/bin\"" >> ~/.zshrc
-# echo "export ANDROID_SDK_HOME=\"\$HOME/Library/Android/sdk\"" >> ~/.zshrc
 echo "export PATH=\"\$PATH:\$HOME/goinfre/Flutter/flutter/bin\"" >> ~/.zshrc
 echo "export PATH=\"\$PATH:\$HOME/Library/Android/sdk/platform-tools\"" >> ~/.zshrc
-# echo "export PATH=\"\$PATH:\$HOME/Library/Android/sdk/tools/bin\"" >> ~/.zshrc
 echo "export PATH=\"\$PATH:\$HOME/Library/Android/sdk/cmdline-tools/latest/bin\"" >> ~/.zshrc
 echo
 
-echo "Updating PATH in .zshrc"
+source ~/.zshrc
+
+echo "Accepting Android Licenses";
+yes | sdkmanager --licenses >> /dev/null;
+
+echo "Installing Android SDKs";
+sdkmanager "build-tools;33.0.0" "emulator" "extras;android;m2repository" "platform-tools" "platforms;android-32" "platforms;android-33" "sources;android-32" "sources;android-33" "system-images;android-32;google_apis;x86_64";
+
 open /Applications/Android\ Studio.app
 
 if [ $? -eq "1" ]; then
@@ -49,15 +63,9 @@ echo "$COLOR2 		⛔️                                                ⛔️" $N
 echo "$COLOR2 		⛔️⛔️⛔️⛔️⛔️⛔️⛔️⛔️⛔️⛔️⛔️⛔️⛔️⛔️⛔️⛔️⛔️⛔️⛔️⛔️⛔️⛔️⛔️⛔️⛔️⛔️" $NC
 echo "0️⃣ -$COLOR3 OPEN A NEW TERMINAL WINDOW TO KEEP THESE INSTRUCTIONS VISIBLE" $NC
 echo "0️⃣ -$COLOR3 IF YOU ACCIDENTALLY CLOSE THIS WINDOW RUN:$COLOR curl -fsSL https://raw.githubusercontent.com/hakamdev/INSTALL_ANDROID_STUDIO_FLUTTER_1337_SCHOOL/master/show_instr.sh | zsh" $NC
-echo "1️⃣ - Open Android Studio if it wasn't opened automatically and follow the instructions to install SDK!"
-echo "2️⃣ - Now that the SDK is installed, go to Plugins tab on the left side, and Install Flutter Plugin."
-echo "3️⃣ - Now, click on the 3 dots, on the top-right corner of Android St. and choose SDK Manager"
-echo "4️⃣ - On the SDK manager, navigate to the SDK Tools in the middle, and check Android SDK Command-line Tools"
-echo "5️⃣ - If you need an emulator you can download an Image later when you want to create a new emulator, by selecting AVD manager"
-echo "6️⃣ - Now, Click OK to start installing the extra stuff you checked."
-echo "7️⃣ - Finally, open a terminal and run the command:$COLOR flutter doctor" $NC
-echo "🔴- You'll see some error, don't worry, just need to accept to licenses, run:$COLOR flutter doctor --android-licenses" $NC
-echo "   and accept all licenses, by writing $COLOR'y'$NC and hitting Enter each time." $NC
+
+echo "1️⃣ - Open Android Studio, go to Plugins tab on the left side, and Install Flutter Plugin."
+echo "7️⃣ - Open a terminal and run the command:$COLOR flutter doctor" $NC
 echo "🔴- The errors concerning XCode, you can install cocoapods using:$COLOR brew install cocoapods" $NC
 echo "🔴- If you don't have brew installed already: install it in goinfre using:\n$COLOR    curl -fsSL https://raw.githubusercontent.com/hakamdev/42homebrew/master/install.sh | zsh" $NC
 echo "⛔️- The XCode error can only be solved with Updating XCode. You can't do that. So, just ignore it." $NC
@@ -68,4 +76,4 @@ echo "🔵- If you are asked for flutter SDK Path, here it is $COLOR $HOME/goinf
 echo "🔵- After the project is created, you may need to show it where SDK is, the first time, so go to $COLOR File > Project Structure > $NC and where it says $COLOR<No SDK>$NC, select latest Android API..." $NC
 echo "🔵- If you want to create an emulator, go to $COLOR Tools > AVD Manager > $NC and create a new one. You can download an image from there too." $NC
 echo "🔵- If you want to run the app on your phone, you need to enable USB Debugging on your phone, and connect it to your computer." $NC
-echo "🛑- If you prefer VSCode. Then I can't help you. Figure it out yourself. You probably need to install Flutter and Dart extensions and stuff..." $NC
+echo "🛑- If you prefer VSCode. You need to install VSCode Flutter and Dart extensions and stuff..." $NC

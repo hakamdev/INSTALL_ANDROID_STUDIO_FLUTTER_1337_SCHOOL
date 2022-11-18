@@ -1,0 +1,1 @@
+"build-tools;33.0.0" "emulator" "extras;android;m2repository" "platform-tools" "platforms;android-32" "platforms;android-33" "sources;android-32" "sources;android-33" "system-images;android-32;google_apis;x86_64"
