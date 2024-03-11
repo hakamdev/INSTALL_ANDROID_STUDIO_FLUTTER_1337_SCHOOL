@@ -1,5 +1,5 @@
 echo "0- Making sure Android studio is installed...";
-STUDIO_EXISTS=$(ls -la /Applications | grep Android)
+STUDIO_EXISTS=$(ls -la /Applications | grep Android\ Studio)
 if [ "$STUDIO_EXISTS" = "" ]; then
     echo "-- Android Studio is not installed! Please install it from Managed Software Center and rerun this script!";
     open /Applications/Managed\ Software\ Center.app;
@@ -80,7 +80,8 @@ echo "-- Done"
 echo "Installing A compatible Android emulator (cuz the latest version doesn't work)...Please wait...";
 curl 'https://r4---sn-5hne6nzd.gvt1.com/edgedl/android/repository/emulator-darwin_x64-7820599.zip?mh=Y7&pl=20&shardbypass=sd&cm2rm=sn-hxqpuxa-jhoz7l,sn-h5q6l7l&req_id=2102259e3624a0d7&ipbypass=yes&redirect_counter=2&cms_redirect=yes&cmsv=e&mip=197.230.240.146&mm=34&mn=sn-5hne6nzd&ms=ltu&mt=1706119249&mv=m&mvi=4&rmhost=r3---sn-5hne6nzd.gvt1.com' > $HOME/Library/Android/sdk/emulator.zip;
 unzip $HOME/Library/Android/sdk/emulator.zip -d $HOME/Library/Android/sdk > /dev/null;
-cp -r ./package.xml $HOME/Library/Android/sdk/emulator/package.xml;
+
+curl -fsSL https://raw.githubusercontent.com/hakamdev/INSTALL_ANDROID_STUDIO_FLUTTER_1337_SCHOOL/master/package.xml > $HOME/Library/Android/sdk/emulator/package.xml;
 echo "-- Done";
 
 echo "Opening Android Studio...";
